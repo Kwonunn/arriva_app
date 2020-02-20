@@ -52,6 +52,20 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _clearFields() {
+    // Do nothing for now
+    setState(() {
+      _counter++;
+    });
+  }
+
+  void _foldAllFields() {
+    // Do nothing for now
+    setState(() {
+      _counter++;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -97,10 +111,30 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
-          floatingActionButton: FloatingActionButton(
+          floatingActionButton: FloatingActionButton.extended(
+            label: Text('Verzenden'),
+            icon: Icon(Icons.mail_outline),
+            tooltip: 'Verzenden',
             onPressed: _incrementCounter,
-            tooltip: 'Increment',
-            child: Icon(Icons.mail_outline),
+            elevation: 4.0,
+          ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+          bottomNavigationBar: BottomAppBar(
+            child: new Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.clear),
+                  onPressed: _clearFields,
+                ),
+                IconButton(
+                  icon: Icon(Icons.arrow_right),
+                  onPressed: _foldAllFields,
+                ),
+              ],
+            ),
           ),
         ));
   }
