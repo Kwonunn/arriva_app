@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:arriva_app/questions.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Arriva App',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Arriva Afname'),
     );
@@ -55,15 +56,12 @@ class _MyHomePageState extends State<MyHomePage> {
   void _clearFields() {
     // Do nothing for now
     setState(() {
-      _counter++;
+      _counter = 0;
     });
   }
 
   void _foldAllFields() {
     // Do nothing for now
-    setState(() {
-      _counter++;
-    });
   }
 
   @override
@@ -85,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      'You have pushed the button this many times:',
+                      'Functietest knop.',
                     ),
                     Text(
                       '$_counter',
@@ -95,20 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               // Invul tab
-              Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'You have pushed the button this many times:',
-                    ),
-                    Text(
-                      '$_counter',
-                      style: Theme.of(context).textTheme.display1,
-                    ),
-                  ],
-                ),
-              ),
+              QuestionFields(),
             ],
           ),
           floatingActionButton: FloatingActionButton.extended(
@@ -130,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: _clearFields,
                 ),
                 IconButton(
-                  icon: Icon(Icons.arrow_right),
+                  icon: Icon(Icons.keyboard_arrow_left),
                   onPressed: _foldAllFields,
                 ),
               ],
