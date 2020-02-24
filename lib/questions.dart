@@ -3,18 +3,33 @@ import 'package:flutter/material.dart';
 class QuestionList extends StatefulWidget {
   QuestionList({Key key}) : super(key: key);
 
-  QuestionListState createState() => QuestionListState();  
+  QuestionListState createState() => QuestionListState();
 }
 
 class QuestionListState extends State<QuestionList> {
   Widget build(BuildContext context) {
-    return ExpansionPanelList(
+    return SingleChildScrollView(
+        child: Container(
+            child: ExpansionPanelList(
       expansionCallback: (int index, bool isExpanded) {
         setState(() {
           questions[index].isExpanded = !isExpanded;
         });
       },
-    );
+      children: questions.map<ExpansionPanel>((QuestionBox item) {
+        return ExpansionPanel(
+          headerBuilder: (BuildContext context, bool isExpanded) {
+            return ListTile(
+              title: item.headerValue,
+            );
+          },
+          body: ListTile(
+            title: item.expandedValue,
+          ),
+          isExpanded: item.isExpanded,
+        );
+      }).toList(),
+    )));
   }
 }
 
