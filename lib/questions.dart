@@ -3,12 +3,14 @@ import 'package:expandable/expandable.dart';
 
 class QuestionFields extends StatelessWidget {
   Widget build(BuildContext context) {
-    return ListView.builder(
-        padding: const EdgeInsets.all(3),
-        itemCount: 1,
-        itemBuilder: (BuildContext context, int index) {
-          return questionBuilder(index);
-        });
+    return ListView.separated(
+      padding: const EdgeInsets.all(3),
+      itemCount: questions.length,
+      itemBuilder: (BuildContext context, int index) {
+        return questionBuilder(index);
+      },
+      separatorBuilder: (BuildContext context, int index) => const Divider(),
+    );
   }
 }
 
@@ -29,4 +31,9 @@ class QuestionBox {
   Text body;
 }
 
-final List<QuestionBox> questions = [QuestionBox("Header 1", "Body 1"), QuestionBox("Header 2", "Body 2"), QuestionBox("Header 3", "Body 3"),];
+final List<QuestionBox> questions = [
+  QuestionBox("Title 1", "Body 1"),
+  QuestionBox("Header 2", "Body 2"),
+  QuestionBox("Header 3", "Body 3"),
+  QuestionBox("Foo", "Bar"),
+];
