@@ -53,7 +53,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _foldAllFields() {
-    // Do nothing for now
+    setState(() {
+      for (int i = 0; i < questions.length; i++) {
+        questions[i].isExpanded = false;
+      }
+    });
   }
 
   @override
@@ -107,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   onPressed: _clearFields,
                 ),
                 IconButton(
-                  icon: Icon(Icons.keyboard_arrow_left),
+                  icon: Icon(Icons.keyboard_arrow_up),
                   onPressed: _foldAllFields,
                 ),
               ],
