@@ -1,34 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:expandable/expandable.dart';
 
-class QuestionFields extends StatelessWidget {
+class QuestionList extends StatefulWidget {
+  QuestionList({Key key}) : super(key: key);
+
+  QuestionListState createState() => QuestionListState();  
+}
+
+class QuestionListState extends State<QuestionList> {
   Widget build(BuildContext context) {
-    return ListView.separated(
-      padding: const EdgeInsets.all(3),
-      itemCount: questions.length,
-      itemBuilder: (BuildContext context, int index) {
-        return questionBuilder(index);
+    return ExpansionPanelList(
+      expansionCallback: (int index, bool isExpanded) {
+        setState(() {
+          questions[index].isExpanded = !isExpanded;
+        });
       },
-      separatorBuilder: (BuildContext context, int index) => const Divider(),
     );
   }
 }
 
-ExpandablePanel questionBuilder(int index) {
-  return ExpandablePanel(
-    header: questions[index].header,
-    expanded: questions[index].body,
-  );
-}
-
 class QuestionBox {
-  QuestionBox(String header, String body) {
-    // Constructor
-    this.header = Text(header);
-    this.body = Text(body);
+  QuestionBox(String headerText, String expandedText) {
+    this.headerValue = Text(headerText);
+    this.expandedValue = Text(expandedText);
+    this.isExpanded = false;
   }
-  Text header;
-  Text body;
+
+  Widget expandedValue;
+  Text headerValue;
+  bool isExpanded;
 }
 
 final List<QuestionBox> questions = [
