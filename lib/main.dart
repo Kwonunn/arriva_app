@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
       title: 'Arriva App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.lightBlue,
+        primaryColor: Colors.indigo[400],
+        primarySwatch: Colors.indigo,
       ),
       home: MyHomePage(title: 'Arriva Afname'),
     );
