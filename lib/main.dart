@@ -40,10 +40,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  GlobalKey<FormState> _formKey;
 
   void _sendForm() {
-    _formKey;
   }
 
   void _clearFields() {
