@@ -77,14 +77,13 @@ class _MyHomePageState extends State<MyHomePage> {
               // Home tab
               Center(
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Text(
-                      'Functietest knop.',
-                    ),
-                    Text(
-                      '$_counter',
-                      style: Theme.of(context).textTheme.display1,
+                    Image.asset("images/arriva_logo.png"),
+                    Container(
+                      margin: EdgeInsets.all(20),
+                      child: Text("Arriva homepagina tekst bleh")
                     ),
                   ],
                 ),
