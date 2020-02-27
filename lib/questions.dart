@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-// import 'package:arriva_app/main.dart';
+import 'package:arriva_app/main.dart';
 
 class QuestionList extends StatefulWidget {
   QuestionList({Key key}) : super(key: key);
-  
+
   QuestionListState createState() => QuestionListState();
 }
 
 class QuestionListState extends State<QuestionList> {
-  
   Widget build(BuildContext context) {
     return SingleChildScrollView(
         child: Form(
+            key: MyHomePageState.formKey,
             child: Container(
                 padding: EdgeInsets.all(5),
                 child: ExpansionPanelList(
@@ -53,7 +53,8 @@ class QuestionBox {
           child: Column(
             children: <Widget>[
               Text("Vraag 1"),
-              TextFormField()
+              TextFormField(
+              )
             ],
           ),
         ),
