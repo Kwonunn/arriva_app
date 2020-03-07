@@ -9,22 +9,23 @@ import 'package:flutter_share/flutter_share.dart';
 class SpreadsheetMaker {
   static Future<String> get _tempPath async {
     // Function to get local temp directory
-    final directory = await getTemporaryDirectory();
+    final directory = await getApplicationDocumentsDirectory();
     return directory.path;
   }
 
-  static Future<File> get _localFile async {
+  static Future<File> get _emptyLocalSheet async {
     // Function to make file future
     final path = await _tempPath;
-    return File('$path/outputSheet.xlsx');
+    File emptySheet = ;
+    return emptySheet.copySync('$path/outputSheet.xlsx');
   }
 
   static void createSpreadsheet() async {
     // Set up a spreadsheed decoder to add stuff to a spreadsheet.
     String sheet = "Sheet1";
-    File _sheetFile = await _localFile; // Await file so I don't have to mess with asynchonous programming.
+    File _sheetFile = await _emptyLocalSheet; // Await file so I don't have to mess with asynchonous programming.
     var bytes = _sheetFile.readAsBytesSync();
-    SpreadsheetDecoder decoder = SpreadsheetDecoder.decodeBytes(bytes);
+    SpreadsheetDecoder decoder = SpreadsheetDecoder.decodeBytes(bytes, update: true);
     
     // Clear sheet
     decoder.removeColumn(sheet, 0);
