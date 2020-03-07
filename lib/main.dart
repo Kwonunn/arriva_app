@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:arriva_app/questions.dart';
+import 'package:arriva_app/sendForm.dart';
 
 void main() => runApp(MyApp());
 
@@ -39,11 +40,14 @@ class MyHomePage extends StatefulWidget {
 
 class MyHomePageState extends State<MyHomePage> {
   static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  static final int questionAmount = 3;
 
   void sendForm() {
     setState(() {
       if (formKey.currentState.validate()) {
         formKey.currentState.save();
+        SpreadsheetMaker.createSpreadsheet();
+        SpreadsheetMaker.shareSpreadsheet();
       }
     });
   }
