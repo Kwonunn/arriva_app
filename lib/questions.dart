@@ -41,6 +41,37 @@ class QuestionListState extends State<QuestionList> {
   }
 }
 
+class Question {
+  Question(int id, String question, bool isValue) {
+    this.id = id;
+    this.question = question;
+    this.isValue = isValue;
+  }
+
+  void setAnswer(String newAnswer) {
+    this.answer = newAnswer;
+  }
+
+  int id;
+  String question = "";
+  bool isValue = true;
+  String answer = "";
+}
+
+class Category {
+  Category(int id, List<int> questions, String name, String subtitle) {
+    this.id = id;
+    this.questions = questions;
+    this.name = name;
+    this.subtitle = subtitle;
+  }
+
+  int id;
+  List<int> questions;
+  String name = "";
+  String subtitle = "";
+}
+
 class QuestionBox {
   QuestionBox(String headerText, String headerSub, String expandedText) {
     // Assemble the variables for a single box of title, text and questions.

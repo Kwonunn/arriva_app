@@ -40,7 +40,7 @@ class MyHomePage extends StatefulWidget {
 class MyHomePageState extends State<MyHomePage> {
   static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  void _sendForm() {
+  void sendForm() {
     if (formKey.currentState.validate()) {
       formKey.currentState.save();
     }
@@ -55,14 +55,6 @@ class MyHomePageState extends State<MyHomePage> {
       for (int i = 0; i < questions.length; i++) {
         questions[i].isExpanded = false;
       }
-    });
-  }
-
-  String questionField = "";
-
-  void updateQuestionField(String value) {
-    setState(() {
-      questionField = value;
     });
   }
 
@@ -89,7 +81,6 @@ class MyHomePageState extends State<MyHomePage> {
                     Container(
                         margin: EdgeInsets.all(20),
                         child: Text("Arriva homepagina tekst bleh")),
-                    Text(questionField),
                   ],
                 ),
               ),
@@ -101,7 +92,7 @@ class MyHomePageState extends State<MyHomePage> {
             label: Text('Verzenden'),
             icon: Icon(Icons.mail_outline),
             tooltip: 'Verzenden',
-            onPressed: _sendForm,
+            onPressed: sendForm,
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
