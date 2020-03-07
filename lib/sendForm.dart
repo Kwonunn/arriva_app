@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:async';
+import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:arriva_app/questions.dart';
 import 'package:arriva_app/main.dart';
@@ -16,17 +17,22 @@ class SpreadsheetMaker {
   static Future<File> get _emptyLocalSheet async {
     // Function to make file future
     final path = await _tempPath;
-    File emptySheet = ;
-    return emptySheet.copySync('$path/outputSheet.xlsx');
+    Future<ByteData> data = rootBundle.load('res/emptySheet.xlsx');
+    ByteData dataRead = await data;
+    final buffer = dataRead.buffer;
+    return new File('$path/outputSheet.xlsx').writeAsBytes(
+        buffer.asUint8List(dataRead.offsetInBytes, dataRead.lengthInBytes));
   }
 
   static void createSpreadsheet() async {
     // Set up a spreadsheed decoder to add stuff to a spreadsheet.
     String sheet = "Sheet1";
-    File _sheetFile = await _emptyLocalSheet; // Await file so I don't have to mess with asynchonous programming.
+    File _sheetFile =
+        await _emptyLocalSheet; // Await file so I don't have to mess with asynchonous programming.
     var bytes = _sheetFile.readAsBytesSync();
-    SpreadsheetDecoder decoder = SpreadsheetDecoder.decodeBytes(bytes, update: true);
-    
+    SpreadsheetDecoder decoder =
+        SpreadsheetDecoder.decodeBytes(bytes, update: true);
+
     // Clear sheet
     decoder.removeColumn(sheet, 0);
     decoder.removeColumn(sheet, 1);
@@ -40,6 +46,9 @@ class SpreadsheetMaker {
 
   static void shareSpreadsheet() async {
     final path = await _tempPath;
-    FlutterShare.shareFile(title: "Exporteer afnamelijst", filePath: '$path/outputSheet.xlsx', text: "");
+    FlutterShare.shareFile(
+        title: "Exporteer afnamelijst",
+        filePath: '$path/outputSheet.xlsx',
+        text: "");
   }
 }
