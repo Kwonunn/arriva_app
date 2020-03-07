@@ -1,6 +1,4 @@
 # ToDo
 
-- Listview
-  - Scrollable
-  - Containers
-- IJsmeester afkijken
+- Vragen toevoegen
+- Clear are you sure dialog

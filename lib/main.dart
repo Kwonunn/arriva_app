@@ -51,8 +51,29 @@ class MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _clearFields() {
-    formKey.currentState.reset();
+  void _clearFields(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (_) {
+          return AlertDialog(
+            title: Text("Wil je alle velden leegmaken?"),
+            actions: <Widget>[
+              FlatButton(
+                child: Text("Annuleren"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              FlatButton(
+                child: Text("Leegmaken"),
+                onPressed: () {
+                  formKey.currentState.reset();
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
   }
 
   void _foldAllFields() {
@@ -108,7 +129,9 @@ class MyHomePageState extends State<MyHomePage> {
               children: <Widget>[
                 IconButton(
                   icon: Icon(Icons.clear),
-                  onPressed: _clearFields,
+                  onPressed: () {
+                    _clearFields(context);
+                  },
                 ),
                 IconButton(
                   icon: Icon(Icons.keyboard_arrow_up),
@@ -120,4 +143,3 @@ class MyHomePageState extends State<MyHomePage> {
         ));
   }
 }
-
