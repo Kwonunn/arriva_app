@@ -42,7 +42,7 @@ class MyHomePageState extends State<MyHomePage> {
   static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   static int questionAmount = 0;
 
-  void sendForm() {
+  void _sendForm() {
     setState(() {
       if (formKey.currentState.validate()) {
         formKey.currentState.save();
@@ -118,7 +118,7 @@ class MyHomePageState extends State<MyHomePage> {
             label: Text('Verzenden'),
             icon: Icon(Icons.mail_outline),
             tooltip: 'Verzenden',
-            onPressed: sendForm,
+            onPressed: _sendForm,
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
