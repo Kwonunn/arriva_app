@@ -24,7 +24,7 @@ class SpreadsheetMaker {
         buffer.asUint8List(dataRead.offsetInBytes, dataRead.lengthInBytes));
   }
 
-  static void createSpreadsheet() async {
+  static void sendSpreadsheet() async {
     // Set up a spreadsheed decoder to add stuff to a spreadsheet.
     String sheet = "Sheet1";
     File _sheetFile =
@@ -33,19 +33,17 @@ class SpreadsheetMaker {
     SpreadsheetDecoder decoder =
         SpreadsheetDecoder.decodeBytes(bytes, update: true);
 
-    // Clear sheet
-    decoder.removeColumn(sheet, 0);
-    decoder.removeColumn(sheet, 1);
-    decoder.removeColumn(sheet, 2);
+    decoder.insertColumn(sheet, 0);
+    decoder.insertColumn(sheet, 1);
 
     for (int i = 0; i < MyHomePageState.questionAmount; i++) {
+      decoder.insertRow(sheet, i);
       decoder.updateCell(sheet, 0, i, questions[i].question);
       decoder.updateCell(sheet, 1, i, questions[i].answer);
     }
-  }
 
-  static void shareSpreadsheet() async {
     final path = await _tempPath;
+
     FlutterShare.shareFile(
         title: "Exporteer afnamelijst",
         filePath: '$path/outputSheet.xlsx',

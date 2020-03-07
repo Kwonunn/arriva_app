@@ -46,8 +46,7 @@ class MyHomePageState extends State<MyHomePage> {
     setState(() {
       if (formKey.currentState.validate()) {
         formKey.currentState.save();
-        SpreadsheetMaker.createSpreadsheet();
-        SpreadsheetMaker.shareSpreadsheet();
+        SpreadsheetMaker.sendSpreadsheet();
       }
     });
   }
