@@ -40,7 +40,7 @@ class MyHomePage extends StatefulWidget {
 
 class MyHomePageState extends State<MyHomePage> {
   static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  static final int questionAmount = 3;
+  static int questionAmount = 0;
 
   void sendForm() {
     setState(() {

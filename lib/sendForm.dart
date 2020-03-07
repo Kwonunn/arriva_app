@@ -5,7 +5,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:arriva_app/questions.dart';
 import 'package:arriva_app/main.dart';
 import 'package:spreadsheet_decoder/spreadsheet_decoder.dart';
-import 'package:flutter_share/flutter_share.dart';
+import 'package:esys_flutter_share/esys_flutter_share.dart';
 
 class SpreadsheetMaker {
   static Future<String> get _tempPath async {
@@ -27,8 +27,7 @@ class SpreadsheetMaker {
   static void sendSpreadsheet() async {
     // Set up a spreadsheed decoder to add stuff to a spreadsheet.
     String sheet = "Sheet1";
-    File _sheetFile =
-        await _emptyLocalSheet; // Await file so I don't have to mess with asynchonous programming.
+    File _sheetFile = await _emptyLocalSheet; // Await file so I don't have to mess with asynchonous programming.
     var bytes = _sheetFile.readAsBytesSync();
     SpreadsheetDecoder decoder =
         SpreadsheetDecoder.decodeBytes(bytes, update: true);
@@ -42,11 +41,6 @@ class SpreadsheetMaker {
       decoder.updateCell(sheet, 1, i, questions[i].answer);
     }
 
-    final path = await _tempPath;
-
-    FlutterShare.shareFile(
-        title: "Exporteer afnamelijst",
-        filePath: '$path/outputSheet.xlsx',
-        text: "");
+    await Share.file('Export afname', 'afname.xlsx', decoder.encode(), 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',); // Open share dialog to share encoded sheet.
   }
 }

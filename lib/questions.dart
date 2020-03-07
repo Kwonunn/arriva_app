@@ -105,16 +105,19 @@ class Category {
 }
 
 final List<Category> categories = [
-  Category(0, [0, 1, 2], "Algemeen", "Algemene vragen over de bus"),
+  Category(0, [0, 1, 2, 3], "Algemeen", "Algemene vragen over de bus"),
   Category(1, [], "Niet algemeen", "iets anders dus"),
 ];
 
 HashMap<int, Question> fillHashMap(HashMap<int, Question> emptyMap) {
   List<Question> toFill = [
-    Question(0, "Is de bus groen?"),
-    Question(1, "Oh ja, open vragen. Welke kleur is de bus?"),
-    Question(2, "Welke vorm zijn de wielen?")
+    Question(0, "Werkt het systeem nu helemaal?"),
+    Question(1, "Moeten er nog vragen in gegooid worden?"),
+    Question(2, "Is deze spreadsheet volledig met de app gemaakt?"),
+    Question(3, "Ben ik toch eigenlijk best wel goed in programmeren?"),
   ];
+
+  MyHomePageState.questionAmount = toFill.length;
 
   for (Question entry in toFill) {
     emptyMap.update(entry.id, (e) => entry, ifAbsent: () => entry);
