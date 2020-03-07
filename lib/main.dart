@@ -41,9 +41,11 @@ class MyHomePageState extends State<MyHomePage> {
   static final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   void sendForm() {
-    if (formKey.currentState.validate()) {
-      formKey.currentState.save();
-    }
+    setState(() {
+      if (formKey.currentState.validate()) {
+        formKey.currentState.save();
+      }
+    });
   }
 
   void _clearFields() {
@@ -52,8 +54,8 @@ class MyHomePageState extends State<MyHomePage> {
 
   void _foldAllFields() {
     setState(() {
-      for (int i = 0; i < questions.length; i++) {
-        questions[i].isExpanded = false;
+      for (int i = 0; i < categories.length; i++) {
+        categories[i].isExpanded = false;
       }
     });
   }
@@ -80,7 +82,7 @@ class MyHomePageState extends State<MyHomePage> {
                     Image.asset("images/arriva_logo.png"),
                     Container(
                         margin: EdgeInsets.all(20),
-                        child: Text("Arriva homepagina tekst bleh")),
+                        child: Text(questions[0].answer)),
                   ],
                 ),
               ),
