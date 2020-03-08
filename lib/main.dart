@@ -67,7 +67,10 @@ class MyHomePageState extends State<MyHomePage> {
               FlatButton(
                 child: Text("Leegmaken"),
                 onPressed: () {
-                  formKey.currentState.reset();
+                  for (int i = 0; i < MyHomePageState.questionAmount; i++) {
+                    questions[i].textController.value =
+                        new TextEditingValue(text: "");
+                  }
                   Navigator.of(context).pop();
                 },
               ),
