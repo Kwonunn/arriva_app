@@ -143,66 +143,66 @@ final List<Category> categories = [
         return i + 0;
       }),
       "Algemeen"),
-  // Category(
-  //     0,
-  //     List.generate(3, (i) {
-  //       return i + 6;
-  //     }),
-  //     "Visueel"),
-  // Category(
-  //     0,
-  //     List.generate(6, (i) {
-  //       return i + 9;
-  //     }),
-  //     "Kwaliteit"),
-  // Category(
-  //     0,
-  //     List.generate(13, (i) {
-  //       return i + 15;
-  //     }),
-  //     "Signalen"),
-  // Category(
-  //     0,
-  //     List.generate(16, (i) {
-  //       return i + 28;
-  //     }),
-  //     "Communicatie"),
-  // Category(
-  //     0,
-  //     List.generate(8, (i) {
-  //       return i + 44;
-  //     }),
-  //     "Kassasystemen"),
-  // Category(
-  //     0,
-  //     List.generate(3, (i) {
-  //       return i + 52;
-  //     }),
-  //     "Visueel"),
-  // Category(
-  //     0,
-  //     List.generate(23, (i) {
-  //       return i + 55;
-  //     }),
-  //     "Apparaten"),
-  // Category(
-  //     0,
-  //     List.generate(4, (i) {
-  //       return i + 78;
-  //     }),
-  //     "Info"),
-  // Category(
-  //     0,
-  //     List.generate(1, (i) {
-  //       return i + 82;
-  //     }),
-  //     "Pilotfish"),
-  // Category(
-  //     0,
-  //     List.generate(1, (i) {
-  //       return i + 83;
-  //     }),
-  //     "Op te pakken"),
+  Category(
+      0,
+      List.generate(3, (i) {
+        return i + 6;
+      }),
+      "Visueel"),
+  Category(
+      0,
+      List.generate(6, (i) {
+        return i + 9;
+      }),
+      "Kwaliteit"),
+  Category(
+      0,
+      List.generate(13, (i) {
+        return i + 15;
+      }),
+      "Signalen"),
+  Category(
+      0,
+      List.generate(16, (i) {
+        return i + 28;
+      }),
+      "Communicatie"),
+  Category(
+      0,
+      List.generate(8, (i) {
+        return i + 44;
+      }),
+      "Kassasystemen"),
+  Category(
+      0,
+      List.generate(3, (i) {
+        return i + 52;
+      }),
+      "Visueel"),
+  Category(
+      0,
+      List.generate(23, (i) {
+        return i + 55;
+      }),
+      "Apparaten"),
+  Category(
+      0,
+      List.generate(4, (i) {
+        return i + 78;
+      }),
+      "Info"),
+  Category(
+      0,
+      List.generate(1, (i) {
+        return i + 82;
+      }),
+      "Pilotfish"),
+  Category(
+      0,
+      List.generate(1, (i) {
+        return i + 83;
+      }),
+      "Op te pakken"),
 ];
 
 HashMap<int, Question> fillHashMap(HashMap<int, Question> emptyMap) {
