@@ -77,11 +77,28 @@ class MyHomePageState extends State<MyHomePage> {
   }
 
   void _foldAllFields() {
-    setState(() {
-      for (int i = 0; i < categories.length; i++) {
-        categories[i].isExpanded = false;
+    if (_areFieldsFolded()) {
+      setState(() {
+        for (int i = 0; i < categories.length; i++) {
+          categories[i].isExpanded = true;
+        }
+      });
+    } else {
+      setState(() {
+        for (int i = 0; i < categories.length; i++) {
+          categories[i].isExpanded = false;
+        }
+      });
+    }
+  }
+
+  bool _areFieldsFolded() {
+    for (var i in categories) {
+      if (i.isExpanded) {
+        return false;
       }
-    });
+    }
+    return true;
   }
 
   @override
@@ -134,7 +151,9 @@ class MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.keyboard_arrow_up),
+                  icon: _areFieldsFolded()
+                      ? Icon(Icons.keyboard_arrow_up)
+                      : Icon(Icons.keyboard_arrow_down),
                   onPressed: _foldAllFields,
                 ),
               ],
