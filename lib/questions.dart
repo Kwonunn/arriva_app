@@ -178,7 +178,7 @@ final List<Category> categories = [
       List.generate(3, (i) {
         return i + 52;
       }),
-      "Visueel"),
+      "Overig"),
   Category(
       0,
       List.generate(23, (i) {

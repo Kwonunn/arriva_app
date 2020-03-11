@@ -104,6 +104,8 @@ class MyHomePageState extends State<MyHomePage> {
     return true;
   }
 
+  List<bool> _expandeds = [false, false];
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -119,17 +121,57 @@ class MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               // Home tab
               Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Image.asset("images/arriva_logo.png"),
-                    Container(
-                        margin: EdgeInsets.all(20),
-                        child: Text(questions[0].answer)),
-                  ],
-                ),
-              ),
+                  child: ListView(
+                padding: EdgeInsets.all(5),
+                children: <Widget>[
+                  Image.asset("images/arriva_logo.png"),
+                  Container(
+                      margin: EdgeInsets.all(8),
+                      child: Text(
+                          "Waarschuwing: Als je de app SLUIT zonder de afname te versturen zijn de gegevens kwijt!",
+                          style: TextStyle(
+                            color: Color(0xFFFF0000),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ))),
+                  ExpansionPanelList(
+                    expansionCallback: (int i, bool isExpanded) {
+                      setState(() {
+                        _expandeds[i] = !isExpanded;
+                      });
+                    },
+                    children: [
+                      ExpansionPanel(
+                        isExpanded: _expandeds[1],
+                        headerBuilder: (context, _expandeds) {
+                          return ListTile(
+                            title: Text("Uitleg"),
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 0),
+                          );
+                        },
+                        body: Image.asset("images/uitleg.png"),
+                        canTapOnHeader: true,
+                      ),
+                      ExpansionPanel(
+                        isExpanded: _expandeds[2],
+                        headerBuilder: (context, _expandeds) {
+                          return ListTile(
+                            title: Text("Bleh"),
+                            contentPadding: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 0),
+                          );
+                        },
+                        body: Text("Tekst over de app."),
+                        canTapOnHeader: true,
+                      )
+                    ],
+                  ),
+                  Container(
+                    height: 30,
+                  ),
+                ],
+              )),
               // Invul tab
               QuestionList()
             ],
