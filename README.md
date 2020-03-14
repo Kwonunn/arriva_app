@@ -11,3 +11,6 @@ A way to solve the problems of administration of the maintenance of public trans
 - Connect an android device
 - Start ADB
 - flutter run
+
+## Compile app
+- flutter build apk
